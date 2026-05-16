@@ -107,15 +107,7 @@ router.post('/login', async (req, res) => {
             return res.status(400).json({ message: 'Email and password are required.' });
         }
         
-        // Handle hardcoded admin login first
-        if (email.toLowerCase() === 'dhairya@bookmydoc.com' && password === 'password123') {
-            const token = jwt.sign({ id: 'admin_id', role: 'admin' }, process.env.JWT_SECRET || 'your-secret-key', { expiresIn: '1d' });
-            return res.json({
-                message: 'Admin login successful',
-                user: { id: 'admin_id', name: 'Admin', email: 'dhairya@bookmydoc.com', role: 'admin' },
-                token
-            });
-        }
+        // No hardcoded admin login; authenticate via database
 
         // **OPTIMIZATION: Find user and doctor in parallel**
         const [user, doctor] = await Promise.all([

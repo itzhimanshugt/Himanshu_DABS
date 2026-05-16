@@ -137,14 +137,11 @@ const Login = () => {
               }}>
                 <b><u>Demo Accounts</u></b> (Password: <code>password123</code>)
                 <ul style={{ marginTop: '6px', marginBottom: '0px', paddingLeft: '20px' }}>
-                  <li onClick={() => setEmail('dhairya@bookmydoc.com')} style={{ color: 'red', cursor: 'pointer' }}>
-                    dhairya @bookmydoc.com - <i>Admin</i>
+                  <li onClick={() => setEmail('dr.himanshu@galaxy.com')} style={{ color: 'navy', cursor: 'pointer' }}>
+                    dr.himanshu@galaxy.com - <i>Doctor</i>
                   </li>
-                  <li onClick={() => setEmail('dr.dhairya@galaxy.com')} style={{ color: 'navy', cursor: 'pointer' }}>
-                    dr.dhairya@galaxy.com - <i>Doctor</i>
-                  </li>
-                  <li onClick={() => setEmail('dhairya@email.com')} style={{ color: 'green', cursor: 'pointer' }}>
-                    dhairya@email.com - <i>Patient</i>
+                  <li onClick={() => setEmail('himanshu@email.com')} style={{ color: 'green', cursor: 'pointer' }}>
+                    himanshu@email.com - <i>Patient</i>
                   </li>
                 </ul>
               </td>

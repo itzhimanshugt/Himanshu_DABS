@@ -6,19 +6,6 @@ import User from './model/userModel.js';
 import Doctor from './model/doctorModel.js';
 import mongoose from 'mongoose';
 
-// Define Admin model if not exists
-let Admin;
-try {
-  Admin = mongoose.model('admin');
-} catch {
-  const adminSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-    role: { type: String, default: 'admin' }
-  });
-  Admin = mongoose.model('admin', adminSchema);
-}
 import connectDB from './config/mongodb.js';
 
 
@@ -31,38 +18,19 @@ const seedUsers = async () => {
 
   const users = [
     {
-      name: 'Dhairya',
-      email: 'dhairya@email.com',
+      name: 'Himanshu',
+      email: 'himanshu@email.com',
       password: await bcrypt.hash('password123', 10),
       role: 'patient',
     }
   ];
-  // Seed admin in Admin collection
-  const admins = [
-    {
-      name: 'Admin',
-      email: 'admin@bookmydoc.com',
-      password: await bcrypt.hash('password123', 10),
-      role: 'admin',
-    }
-  ];
-
-  // Seed admins
-  for (const admin of admins) {
-    const exists = await Admin.findOne({ email: admin.email });
-    if (!exists) {
-      await Admin.create(admin);
-      console.log(`Created admin: ${admin.email}`);
-    } else {
-      console.log(`Admin already exists: ${admin.email}`);
-    }
-  }
+  // (No admin seeding included)
 
   // Seed doctor in Doctor collection
   const doctors = [
     {
-      name: 'Dr. Dhairya',
-      email: 'dr.dhairya@hospital.com',
+      name: 'Dr. Himanshu',
+      email: 'dr.himanshu@galaxy.com',
       password: await bcrypt.hash('password123', 10),
       speciality: 'Cardiologist',
       degree: 'MBBS, MD',
